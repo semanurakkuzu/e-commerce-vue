@@ -6,8 +6,7 @@
       </div>
       <div class="col">
         <h1>{{ product }}</h1>
-        <p v-if="stock > 10">In stock</p>
-        <p v-else-if="stock <= 10 && stock > 0">Almost sold out!</p>
+        <p v-if="inStock">In stock</p>
         <p v-else>Out of stock</p>
         <ul>
           <li v-for="(item, index) in details" :key="index">{{ item }}</li>
@@ -18,7 +17,7 @@
         </div>
         <div class="row">
           <div class="col-auto">
-            <button class="btn btn-primary" @click="cart=cart+1">Add to Cart</button>
+            <button class="btn btn-primary" @click="cart=cart+1" :disabled="!inStock">Add to Cart</button>
           </div>
           <div class="col">
             <p>Cart:{{ cart }}</p>
@@ -39,7 +38,7 @@ export default {
       product: "socks",
       image:
         "https://cdn.shopify.com/s/files/1/1409/0762/products/Red_Cloud_SOck_copy_800x.jpg?v=1645761997",
-      stock: 0,
+      inStock: true,
       details: ["80% cotton", "20% polyester", "Gender-Neutral"],
       variants: [
         {
