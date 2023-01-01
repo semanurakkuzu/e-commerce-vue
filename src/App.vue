@@ -1,15 +1,17 @@
 <template>
   <div id="app">
-    <button class="btn btn-primary">deneme</button>
+    <my-product></my-product>
   </div>
 </template>
 
 <script>
+import MyProduct from './components/MyProduct.vue'
 
 
 export default {
   name: 'App',
   components: {
+    MyProduct
     
   }
 }
@@ -20,8 +22,5 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
