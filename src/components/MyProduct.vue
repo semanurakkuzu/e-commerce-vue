@@ -5,7 +5,7 @@
         <img :src="image" style="width: 400px; height: 600px" />
       </div>
       <div class="col">
-        <h1>{{ product }}</h1>
+        <h1>{{ title }}</h1>
         <p v-if="inStock">In stock</p>
         <p v-else>Out of stock</p>
         <ul>
@@ -35,6 +35,7 @@ export default {
   name: "MyProduct",
   data() {
     return {
+      brand: "Vue Mastery",
       product: "socks",
       image:
         "https://cdn.shopify.com/s/files/1/1409/0762/products/Red_Cloud_SOck_copy_800x.jpg?v=1645761997",
@@ -53,6 +54,11 @@ export default {
         },
       ],
       cart: 0,
+    }
+  },
+  computed:{
+    title(){
+      return this.brand +' '+ this.product
     }
   },
    methods:{
