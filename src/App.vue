@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <button class="btn btn-primary">deneme</button>
   </div>
 </template>
 
