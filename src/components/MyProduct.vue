@@ -12,8 +12,9 @@
         <ul>
           <li v-for="(item, index) in details" :key="index">{{ item }}</li>
         </ul>
-        <div v-for="variant in variants" :key="variant.variantId">
-          <p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantColor }}</p>
+        <div v-for="variant in variants" :key="variant.variantId" class="box-size"
+        :style="{backgroundColor:variant.variantColor}"
+        @mouseover="updateProduct(variant.variantImage)">
         </div>
         <div class="row">
           <div class="col-auto">
@@ -64,4 +65,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.box-size {
+    width:40px; 
+    height:40px;
+    margin: 5px;
+}
+</style>
