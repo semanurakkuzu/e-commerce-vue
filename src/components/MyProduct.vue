@@ -13,7 +13,7 @@
           <li v-for="(item, index) in details" :key="index">{{ item }}</li>
         </ul>
         <div v-for="variant in variants" :key="variant.variantId">
-          <p>{{ variant.variantColor }}</p>
+          <p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantColor }}</p>
         </div>
         <div class="row">
           <div class="col-auto">
@@ -29,6 +29,8 @@
 </template>
 
 <script>
+
+
 export default {
   name: "MyProduct",
   data() {
@@ -42,15 +44,23 @@ export default {
         {
           variantId: 1,
           variantColor: "red",
+          variantImage:"https://cdn.shopify.com/s/files/1/1409/0762/products/Red_Cloud_SOck_copy_800x.jpg?v=1645761997"
         },
         {
           variantId: 2,
           variantColor: "purple",
+          variantImage:"https://cdn.shopify.com/s/files/1/1409/0762/products/CloudSockinEggplant_800x.png?v=1645761997"
         },
       ],
       cart: 0,
-    };
+    }
   },
+   methods:{
+    updateProduct(variantImage){
+      this.image=variantImage
+    }
+   },
+  
 };
 </script>
 
