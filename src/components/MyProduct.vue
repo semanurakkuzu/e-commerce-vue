@@ -29,26 +29,39 @@
               Add to Cart
             </button>
           </div>
-          
         </div>
       </div>
     </div>
-    <my-product-review @product-review="addReview"></my-product-review>
+    <div>
+      <h2>Reviews</h2>
+      <p v-if="!reviews.length">There are no reviews yet!</p>
+      <ul>
+        <li v-for="(review, index) in reviews" :key="index">
+        <p>{{ review.name }}</p>
+        <p>Rating:{{ review.rating }}</p>
+        <p>{{ review.review }}</p>
+      </li>
+      </ul>
+
+    </div>
+    <div class="card p-2">
+      <my-product-review @review-submited="addReview"></my-product-review>
+    </div>
   </div>
 </template>
 
 <script>
-import MyProductReview from './MyProductReview.vue';
+import MyProductReview from "./MyProductReview.vue";
 export default {
   name: "MyProduct",
   components: {
     MyProductReview,
   },
-  props : {
+  props: {
     premium: {
       type: Boolean,
-      required:true,
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -72,7 +85,7 @@ export default {
           variantQuantity: 0,
         },
       ],
-      reviews:[],
+      reviews: [],
     };
   },
   computed: {
@@ -86,24 +99,23 @@ export default {
       return this.variants[this.selectVariants].variantQuantity;
     },
     shipping() {
-      if(this.premium){
-        return  "Free"
+      if (this.premium) {
+        return "Free";
       }
-        return "2.99"
-      
-    }
+      return "2.99";
+    },
   },
 
   methods: {
     updateProduct(index) {
       this.selectVariants = index;
     },
-    addToCart(){
-     this.$emit("add-to-cart", this.variants[this.selectVariants].variantId)
+    addToCart() {
+      this.$emit("add-to-cart", this.variants[this.selectVariants].variantId);
     },
-    addReview(productReview) {
-      this.reviews.push(productReview)
-    }
+    addReview(formData) {
+      this.reviews.push(formData);
+    },
   },
 };
 </script>
