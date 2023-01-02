@@ -14,12 +14,13 @@
         <label for="review">Review:</label>
         <textarea
           class="form-control"
-          placeholder="Leave a comment here"
           id="review"
           style="height: 100px"
           v-model="formData.review"
         ></textarea>
       </div>
+      <div>
+        <label for="review">Rating:</label>
       <select
         class="form-select mt-3"
         id="rating"
@@ -30,10 +31,10 @@
         <option value="2">Two</option>
         <option value="3">Three</option>
       </select>
+    </div>
       <div class="mt-3">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary container-fluid">Submit</button>
       </div>
-      
     </form>
   </div>
 </template>
