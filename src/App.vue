@@ -4,7 +4,6 @@
       <p class="bg-primary p-2 text-white">Cart:{{ cart.length }}</p>
     </div>
     <my-product :premium="premium" @add-to-cart="updateCard"></my-product>
-    
   </div>
 </template>
 
@@ -14,7 +13,6 @@ export default {
   name: "App",
   components: {
     MyProduct,
-    
   },
   data() {
     return {
