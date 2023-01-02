@@ -53,14 +53,14 @@ export default {
       details: ["80% cotton", "20% polyester", "Gender-Neutral"],
       variants: [
         {
-          variantId: 1,
+          variantId: 11,
           variantColor: "red",
           variantImage:
             "https://cdn.shopify.com/s/files/1/1409/0762/products/Red_Cloud_SOck_copy_800x.jpg?v=1645761997",
           variantQuantity: 10,
         },
         {
-          variantId: 2,
+          variantId: 22,
           variantColor: "purple",
           variantImage:
             "https://cdn.shopify.com/s/files/1/1409/0762/products/CloudSockinEggplant_800x.png?v=1645761997",
@@ -93,7 +93,7 @@ export default {
       this.selectVariants = index;
     },
     addToCart(){
-     this.$emit("add-to-cart")
+     this.$emit("add-to-cart", this.variants[this.selectVariants].variantId)
     }
   },
 };
