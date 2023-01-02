@@ -33,12 +33,17 @@
         </div>
       </div>
     </div>
+    <my-product-review @product-review="addReview"></my-product-review>
   </div>
 </template>
 
 <script>
+import MyProductReview from './MyProductReview.vue';
 export default {
   name: "MyProduct",
+  components: {
+    MyProductReview,
+  },
   props : {
     premium: {
       type: Boolean,
@@ -67,6 +72,7 @@ export default {
           variantQuantity: 0,
         },
       ],
+      reviews:[],
     };
   },
   computed: {
@@ -94,6 +100,9 @@ export default {
     },
     addToCart(){
      this.$emit("add-to-cart", this.variants[this.selectVariants].variantId)
+    },
+    addReview(productReview) {
+      this.reviews.push(productReview)
     }
   },
 };
