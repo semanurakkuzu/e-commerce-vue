@@ -8,6 +8,7 @@
         <h1>{{ title }}</h1>
         <p v-if="inStock">In stock</p>
         <p v-else>Out of stock</p>
+        <p>Shipping: {{ shipping }}</p>
         <ul>
           <li v-for="(item, index) in details" :key="index">{{ item }}</li>
         </ul>
@@ -40,6 +41,12 @@
 <script>
 export default {
   name: "MyProduct",
+  props : {
+    premium: {
+      type: Boolean,
+      required:true,
+    }
+  },
   data() {
     return {
       brand: "Vue Mastery",
@@ -74,6 +81,13 @@ export default {
     },
     inStock() {
       return this.variants[this.selectVariants].variantQuantity;
+    },
+    shipping() {
+      if(this.premium){
+        return  "Free"
+      }
+        return "2.99"
+      
     }
   },
 

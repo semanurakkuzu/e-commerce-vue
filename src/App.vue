@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <my-product></my-product>
+    <my-product :premium="premium"></my-product>
   </div>
 </template>
 
@@ -12,7 +12,11 @@ export default {
   name: 'App',
   components: {
     MyProduct
-    
+  },
+  data() {
+    return{
+      premium: true,
+    }
   }
 }
 </script>
