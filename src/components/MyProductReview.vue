@@ -1,6 +1,14 @@
 <template>
   <div>
     <form @submit.prevent="onSubmit">
+      <p v-if="errors.length">
+        <span class="fw-bold">Please correct the following errors(s)</span>
+        <ul>
+          <li v-for="(error, index) in errors" :key="index">
+          {{ error }}
+          </li>
+        </ul>
+      </p>
       <div class="mb-3">
         <label for="name" class="form-label">Name:</label>
         <input
@@ -49,11 +57,21 @@ export default {
         review: null,
         rating: null,
       },
+      errors:[]
     };
   },
   methods: {
     onSubmit() {
-      this.$emit("review-submited", this.formData);
+
+      if(this.formData.name && this.formData.review && this.formData.rating){
+        this.$emit("review-submited", this.formData);
+      }
+      else {
+        if(!this.formData.name) this.errors.push('Name is required')
+        if(!this.formData.review) this.errors.push('Review is required')
+        if(!this.formData.rating) this.errors.push('Rating is required')
+      }
+     
     },
   },
 };
