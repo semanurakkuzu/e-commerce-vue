@@ -1,6 +1,9 @@
 <template>
-  <div id="app">
-    <my-product :premium="premium"></my-product>
+  <div id="app" class="container">
+    <div class="d-flex justify-content-end">
+            <p class="bg-primary p-2 text-white">Cart:{{ cart }}</p>
+    </div> 
+    <my-product :premium="premium" @add-to-cart="updateCard"></my-product>
   </div>
 </template>
 
@@ -16,6 +19,12 @@ export default {
   data() {
     return{
       premium: true,
+      cart: 0,
+    }
+  },
+  methods:{
+    updateCard(){
+      this.cart += 1
     }
   }
 }

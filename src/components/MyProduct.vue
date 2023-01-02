@@ -23,15 +23,13 @@
           <div class="col-auto">
             <button
               class="btn btn-primary"
-              @click="cart = cart + 1"
+              @click="addToCart"
               :disabled="!inStock"
             >
               Add to Cart
             </button>
           </div>
-          <div class="col">
-            <p>Cart:{{ cart }}</p>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -69,7 +67,6 @@ export default {
           variantQuantity: 0,
         },
       ],
-      cart: 0,
     };
   },
   computed: {
@@ -95,6 +92,9 @@ export default {
     updateProduct(index) {
       this.selectVariants = index;
     },
+    addToCart(){
+     this.$emit("add-to-cart")
+    }
   },
 };
 </script>
